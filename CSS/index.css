@@ -1,4 +1,62 @@
 /* =========================================================
+   VARIÁVEIS
+========================================================= */
+
+:root {
+    --sol: #FFCC00;
+    --laranja-por-do-sol: #FF6600;
+    --azul-do-mar: #0066CC;
+    --mar-profundo: #010829;
+    --palmeira: #228B22;
+
+    --areia-fina: #F5E6C8;
+    --branco: #FFFFFF;
+
+    /* Cores auxiliares */
+    --texto: #222222;
+    --cinza: #666666;
+    --borda: #DDDDDD;
+    --fundo-formulario: #F7F7F7;
+    --placeholder: #888888;
+
+    /* Padronização visual */
+    --raio: 10px;
+    --sombra: 0 4px 14px rgba(0, 0, 0, 0.12);
+
+    /* Transições */
+    --transicao: 0.2s ease;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--branco);
+    color: var(--texto);
+}
+
+
+/* =========================================================
    PÁGINA INICIAL
 ========================================================= */
 
@@ -12,86 +70,130 @@ main {
     display: flex;
     flex-direction: column;
 
-    box-sizing: border-box;
+    flex: 1;
 }
+
+
+/* =========================================================
+   BLOQUEIO / DESFOQUE
+========================================================= */
 
 .desfoque {
     filter: blur(5px);
     pointer-events: none;
-
     user-select: none;
-
 }
 
-/* 
-   MENSAGEM no topo da tela de usuário logado
- */
+
+/* =========================================================
+   USUÁRIO LOGADO
+========================================================= */
 
 #container-usuario-logado {
+    width: min(90%, 400px);
+    min-height: 100px;
+
+    margin: 10px auto 0;
+    padding: 10px;
 
     display: flex;
     flex-direction: column;
 
-
-    width: 90%;
-    max-width: 400px;
-    max-height: 110px;
-    margin: auto;
-
     align-items: center;
     justify-content: center;
 
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
 
-    box-sizing: border-box;
-    padding: 6px;
-    margin-top: 10px;
-    border-radius: 4px;
-    border: 2px solid whitesmoke;
-    background-color: whitesmoke;
+    background-color: var(--fundo-formulario);
+
+    box-shadow: var(--sombra);
 }
 
-p {
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding-bottom: 10px;
+
+/* =========================================================
+   TEXTO DO USUÁRIO
+========================================================= */
+
+#container-usuario-logado p {
+    margin: 0 0 10px;
+
+    color: var(--mar-profundo);
+
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    line-height: 1.3;
+    text-align: center;
 }
+
+
+/* =========================================================
+   BOTÕES DE LOGIN / LOGOUT
+========================================================= */
 
 #btn-logout,
 #btn-login {
-    text-align: center;
-    text-transform: uppercase;
-
+    width: 100%;
     max-width: 120px;
-    padding: 10px;
+    min-height: 42px;
+
+    padding: 9px 15px;
 
     border: 2px solid var(--mar-profundo);
-    border-radius: 7px;
+    border-radius: 8px;
 
     background-color: var(--mar-profundo);
-
     color: var(--branco);
 
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    text-align: center;
+    text-transform: uppercase;
 
     cursor: pointer;
 
     transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease;
+        background-color var(--transicao),
+        border-color var(--transicao),
+        transform var(--transicao),
+        box-shadow var(--transicao);
 }
 
-#btn-logout:hover {
-    background-color: var(--laranja-por-do-sol);
 
+/* =========================================================
+   HOVER DOS BOTÕES
+========================================================= */
+
+#btn-logout:hover,
+#btn-login:hover {
+    background-color: var(--laranja-por-do-sol);
     border-color: var(--laranja-por-do-sol);
 
     transform: translateY(-2px);
+
+    box-shadow: var(--sombra);
 }
 
 
-#btn-logout:active {
+/* =========================================================
+   FOCO DOS BOTÕES
+========================================================= */
+
+#btn-logout:focus-visible,
+#btn-login:focus-visible {
+    outline: 3px solid rgba(0, 102, 204, 0.25);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   ACTIVE
+========================================================= */
+
+#btn-logout:active,
+#btn-login:active {
     transform: translateY(0);
 }
 
@@ -101,8 +203,7 @@ p {
 ========================================================= */
 
 .container-home {
-    width: 90%;
-    max-width: 1000px;
+    width: min(90%, 1000px);
 
     margin: 0 auto;
 
@@ -113,9 +214,8 @@ p {
 
     align-items: center;
     justify-content: center;
-
-    box-sizing: border-box;
 }
+
 
 /* =========================================================
    LOGO
@@ -125,7 +225,6 @@ p {
     display: block;
 
     width: min(45vw, 330px);
-
     height: auto;
 
     margin: 10px 0 25px;
@@ -153,8 +252,8 @@ p {
 
     display: flex;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     gap: 12px;
 }
@@ -165,6 +264,10 @@ p {
 ========================================================= */
 
 .navegacao-home a {
+    min-height: 40px;
+
+    padding: 10px 15px;
+
     display: flex;
 
     align-items: center;
@@ -172,49 +275,41 @@ p {
 
     gap: 8px;
 
-    height: 40px;
-
-    padding: 10px 15px;
-
-    box-sizing: border-box;
-
-    border: none;
+    border: 1px solid var(--borda);
     border-radius: 8px;
 
-    background: linear-gradient(135deg,
-            var(--branco),
-            #f8f8f8);
-
+    background-color: var(--branco);
     color: var(--mar-profundo);
 
-    font-weight: bold;
-
-    box-shadow:
-        2px 3px 6px rgba(0, 0, 0, 0.18);
+    box-shadow: var(--sombra);
 
     text-decoration: none;
-
     white-space: nowrap;
 
+    font-weight: 700;
+
     transition:
-        transform 0.2s ease,
-        background-color 0.2s ease,
-        color 0.2s ease;
+        background-color var(--transicao),
+        border-color var(--transicao),
+        color var(--transicao),
+        transform var(--transicao),
+        box-shadow var(--transicao);
 }
 
 
 /* =========================================================
-   HOVER
+   HOVER DA NAVEGAÇÃO
 ========================================================= */
 
 .navegacao-home a:hover {
     background-color: var(--laranja-por-do-sol);
-
-    background-image: none;
+    border-color: var(--laranja-por-do-sol);
 
     color: var(--branco);
 
     transform: translateY(-2px);
+
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
 }
 
 
@@ -226,37 +321,49 @@ p {
     filter: brightness(0) invert(1);
 }
 
+
+/* =========================================================
+   FOCO DA NAVEGAÇÃO
+========================================================= */
+
+.navegacao-home a:focus-visible {
+    outline: 3px solid rgba(0, 102, 204, 0.25);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
 .rodape {
     width: 100%;
-
     min-height: 65px;
 
     padding: 10px 0;
-
-    box-sizing: border-box;
 
     display: flex;
     align-items: center;
 
     background-color: var(--mar-profundo);
-
     color: var(--branco);
 
     flex-shrink: 0;
 }
 
+
 .container-info-rodape {
-    width: 90%;
-    max-width: 1000px;
+    width: min(90%, 1000px);
 
     margin: 0 auto;
 }
+
 
 .rodape p {
     margin: 2px 0;
 
     font-size: 11px;
-    line-height: 1.3;
+    line-height: 1.4;
 }
 
 
@@ -268,7 +375,6 @@ p {
 
     .logo {
         width: min(50vw, 300px);
-
         margin-bottom: 22px;
     }
 
@@ -278,10 +384,8 @@ p {
 
     .navegacao-home a {
         padding: 10px 12px;
-
         font-size: 0.9rem;
     }
-
 }
 
 
@@ -297,30 +401,28 @@ p {
 
 
     /* -------------------------
-       PERFIL
+       USUÁRIO
     ------------------------- */
 
-    #perfil {
+    #container-usuario-logado {
+        width: min(90%, 350px);
+
         margin-top: 8px;
+        padding: 9px;
     }
 
-
-    .card-perfil {
-        padding: 10px 14px;
-
-        gap: 10px;
+    #container-usuario-logado p {
+        margin-bottom: 8px;
+        font-size: 1rem;
     }
 
+    #btn-logout,
+    #btn-login {
+        min-height: 40px;
 
-    .card-perfil h2 {
-        font-size: 0.95rem;
-    }
+        padding: 8px 14px;
 
-
-    #logout {
-        padding: 8px 15px;
-
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
 
 
@@ -352,17 +454,15 @@ p {
     ------------------------- */
 
     .navegacao-home {
-        flex-direction: column;
-
         width: 100%;
+
+        flex-direction: column;
 
         gap: 9px;
     }
 
-
     .navegacao-home a {
         width: 100%;
-
         max-width: 320px;
 
         min-height: 44px;
@@ -370,10 +470,73 @@ p {
         padding: 10px 14px;
     }
 
-
     .icone {
         width: 20px;
         height: 20px;
     }
 
+
+    /* -------------------------
+       RODAPÉ
+    ------------------------- */
+
+    .rodape {
+        min-height: 50px;
+        padding: 7px 0;
+    }
+
+    .rodape p {
+        font-size: 9px;
+        line-height: 1.3;
+    }
+}
+
+
+/* =========================================================
+   CELULAR PEQUENO / POUCA ALTURA
+========================================================= */
+
+@media (max-width: 480px) and (max-height: 700px) {
+
+    main {
+        min-height: 100dvh;
+    }
+
+    #container-usuario-logado {
+        margin-top: 5px;
+        padding: 7px;
+    }
+
+    #container-usuario-logado p {
+        margin-bottom: 6px;
+        font-size: 0.9rem;
+    }
+
+    #btn-logout,
+    #btn-login {
+        min-height: 36px;
+        padding: 7px 12px;
+        font-size: 0.8rem;
+    }
+
+    .logo {
+        width: min(60vw, 220px);
+
+        margin-top: 3px;
+        margin-bottom: 14px;
+    }
+
+    .navegacao-home {
+        gap: 7px;
+    }
+
+    .navegacao-home a {
+        min-height: 40px;
+        padding: 8px 12px;
+    }
+
+    .rodape {
+        min-height: 45px;
+        padding: 5px 0;
+    }
 }

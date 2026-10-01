@@ -4,15 +4,29 @@
     --azul-do-mar: #0066CC;
     --mar-profundo: #010829;
     --palmeira: #228B22;
-    --areia-fina: beige;
-    --branco: white;
+    --areia-fina: #F5E6C8;
+    --branco: #FFFFFF;
+    --texto: #222222;
+    --cinza: #666666;
+    --borda: #DDDDDD;
+    --raio: 10px;
+    --sombra: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-
+    font-family: 'Franklin Gothic Medium', sans-serif;
     width: 100%;
     min-height: 100vh;
+    margin: 0;
+
     overflow-x: hidden;
+
+    color: var(--texto);
+
 }
 
 main section {
@@ -23,614 +37,496 @@ main section.ativo {
     display: block;
 }
 
-/*ESTILIZAÇÃO DA BARRA DE PROGRESSO QUE FICA ACIMA DA PÁGINA*/
+.titulo-etapa,
+.titulo-etapa-2 {
+    text-align: center;
+
+    margin: 20px 15px;
+}
+
 .progresso {
+    width: min(90%, 700px);
+    margin: 30px auto;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin: 30px auto;
-    max-width: 700px;
+
+    gap: clamp(5px, 2vw, 15px);
 }
 
 .passo {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     opacity: 0.45;
-}
-
-.passo span {
-    width: 36px;
-    height: 36px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-    border: 2px solid gray;
-
-    font-weight: bold;
-}
-
-.passo p {
-    margin: 6px 0 0;
-    font-size: 0.8rem;
 }
 
 .passo.ativo {
     opacity: 1;
 }
 
-.linha {
-    width: 60px;
-    height: 2px;
-    background: gray;
-    opacity: 0.3;
-}
-
-/*TITULOS PRINCIPAIS */
-.titulo-etapa {
-    text-align: center;
-}
-
-
-.titulo-etapa-2 {
-
-    text-align: center;
-}
-
-/*QUADRA E MODALIDADE*/
-.cards-container {
-    text-align: center;
+.passo span {
+    width: clamp(30px, 8vw, 36px);
+    height: clamp(30px, 8vw, 36px);
 
     display: flex;
-    justify-self: center;
     align-items: center;
+    justify-content: center;
 
-    flex-direction: row;
-    justify-content: space-around;
+    border: 2px solid gray;
+    border-radius: 50%;
 
-    height: 175px;
-    width: 50%;
-    align-items: center;
-    padding: 10px 10px;
-
-}
-
-.card-escolha {
-    padding: 20px;
-
-    width: 150px;
-    height: 80px;
-
-    border: none;
-    background-color: white;
-    box-shadow: 4px 4px 8px gray;
-    color: black;
-    border-radius: 8px;
-
-    text-transform: uppercase;
     font-weight: bold;
 }
 
-.card-escolha:hover {
+.passo p {
+    margin: 6px 0 0;
+
+    font-size: clamp(0.65rem, 2vw, 0.8rem);
+
+    text-align: center;
+}
+
+.linha {
+    width: 60px;
+    max-width: 60px;
+    height: 2px;
+
     background-color: gray;
 
-    transform: scale(1.05);
+    opacity: 0.3;
+}
 
-    color: white;
+.cards-container {
+    width: min(90%, 900px);
+
+    margin: 30px auto;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 10px;
+}
+
+.card-escolha {
+    width: 160px;
+    min-height: 80px;
+
+    padding: 20px;
+
+    border: none;
+    border-radius: var(--raio);
+
+    background-color: var(--branco);
+    color: var(--texto);
+
+    box-shadow: var(--sombra);
+
+    text-transform: uppercase;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.card-escolha:hover {
+    background-color: var(--mar-profundo);
+
+    color: var(--branco);
+
+    transform: translateY(-3px);
+
     cursor: pointer;
 }
 
 .card-escolha.selecionado {
     opacity: 1;
     visibility: visible;
+
     border: 2px solid var(--laranja-por-do-sol);
+
     background-color: var(--laranja-por-do-sol);
-    color: white;
-    transform: scale(1.05);
+    color: var(--branco);
+
+    transform: translateY(-3px);
 }
 
 .seguir-progresso {
-    display: flexbox;
-    justify-self: center;
-    justify-content: space-around;
-    width: 60%;
-    text-align: center;
+    width: min(90%, 600px);
 
+    margin: 30px auto;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
 }
 
 .seguir-progresso .btn-prosseguir {
-    width: 100%;
-    max-width: 250px;
-
+    width: min(100%, 250px);
 
     min-height: 50px;
 
-    color: black;
+    padding: 12px 20px;
 
-    font-weight: bold;
-    font-size: large;
-
-    border-radius: 10px;
     border: none;
+    border-radius: var(--raio);
 
-    box-shadow: 2px 2px 10px gray;
+    background-color: var(--branco);
+    color: var(--texto);
 
-    transition: all 0.3s ease-in-out;
+    font-size: 1rem;
+    font-weight: 700;
+
+    box-shadow: var(--sombra);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
 
 .seguir-progresso .btn-prosseguir:hover {
     background-color: var(--mar-profundo);
 
-    transform: scale(1.05);
+    color: var(--branco);
 
-    color: white;
-
-    font-weight: bold;
-    cursor: pointer;
+    transform: translateY(-2px);
 }
 
-/*ETAPA 2.JS 
-ESTILIZAÇÃO DO CALENDÁRIO
-*/
+#btn-voltar-etapa2,
+#btn-voltar-etapa3,
+#btn-voltar-etapa4,
+#btn-etapa3,
+#btn-confirmar-reserva {
+    width: min(100%, 250px);
+
+    min-height: 50px;
+
+    padding: 12px 20px;
+
+    border: none;
+    border-radius: var(--raio);
+
+    background-color: var(--branco);
+    color: var(--texto);
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    box-shadow: var(--sombra);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+#btn-voltar-etapa2:hover,
+#btn-voltar-etapa3:hover,
+#btn-voltar-etapa4:hover,
+#btn-etapa3:hover,
+#btn-confirmar-reserva:hover {
+    background-color: var(--mar-profundo);
+
+    color: var(--branco);
+
+    transform: translateY(-2px);
+}
+
 .calendario {
+    width: min(90%, 450px);
 
-    width: calc(100% - 30px);
-
-    max-width: 450px;
-
-    margin: 20px auto;
+    margin: 30px auto;
 
     padding: 20px;
 
-    border: 1px solid lightgray;
+    border: 1px solid var(--borda);
 
-    border-radius: 10px;
+    border-radius: 12px;
 
-    box-shadow: 4px 4px 8px gray;
-
-    font-family: Arial, sans-serif;
+    box-shadow: var(--sombra);
 
     text-align: center;
+
+    font-family: Arial, sans-serif;
 }
 
 .mes {
-    font-size: 1.2em;
+    margin-bottom: 8px;
+
+    font-size: clamp(1rem, 2vw, 1.3rem);
 
     font-weight: bold;
-
-    margin-bottom: 5px;
 }
 
 .nav {
     display: flex;
 
     justify-content: space-between;
+    align-items: center;
 
     margin-bottom: 10px;
 }
 
 .nav button {
-    background-color: var(--azul-do-mar);
-
-    color: white;
-
-    border: none;
-
-
     min-width: 40px;
     min-height: 40px;
 
     padding: 5px 10px;
 
+    border: none;
+    border-radius: 6px;
+
+    background-color: var(--azul-do-mar);
+    color: var(--branco);
+
     cursor: pointer;
 
-    border-radius: 4px;
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
 }
 
 .nav button:hover {
-    background-color: var(--azul-do-mar);
-}
+    background-color: var(--mar-profundo);
 
+    transform: translateY(-2px);
+}
 
 .dias {
     display: grid;
+
     grid-template-columns: repeat(7, 1fr);
+
     gap: 5px;
 }
 
 .dia {
     padding: 10px;
+
+    border: 1px solid #CCCCCC;
+
     text-align: center;
+
     cursor: pointer;
-    border: 1px solid #ccc;
+
+    border-radius: 4px;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.dia:not(.desabilitado):hover {
+    transform: translateY(-2px);
 }
 
 .dia.desabilitado {
-    background-color: #eee;
-    color: #999;
+    background-color: #EEEEEE;
+
+    color: #999999;
+
     cursor: not-allowed;
 }
 
 .dia.selecionado {
-    background-color: #4caf50;
-    color: white;
+    background-color: var(--palmeira);
+
+    color: var(--branco);
+
+    border-color: var(--palmeira);
 }
 
 .dias div.vazio {
     border: none;
 
     background: transparent;
+
+    cursor: default;
 }
 
-#btn-voltar-etapa2 {
-    margin-right: 20px;
-    width: 100%;
-    max-width: 250px;
-
-
-    min-height: 50px;
-
-    color: black;
-
-    font-weight: bold;
-    font-size: large;
-
-    border-radius: 10px;
-    border: none;
-
-    box-shadow: 2px 2px 10px gray;
-
-    transition: all 0.3s ease-in-out;
-}
-
-#btn-voltar-etapa2:hover {
-    background-color: var(--mar-profundo);
-
-    transform: scale(1.05);
-
-    color: white;
-
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/*ETAPA 3.JS 
-ESTILIZAÇÃO DA GRADE DE HORÁRIOS*/
 #horarios-container {
-    margin-top: 20px;
+    width: min(90%, 800px);
+
+    margin: 30px auto;
 
     display: grid;
 
-    grid-template-rows: repeat(4, 1fr);
-
     grid-template-columns: repeat(4, 1fr);
 
-    width: 50%;
-    height: 56vh;
-    gap: 10px;
-
-    justify-self: center;
+    gap: 12px;
 }
 
 #horarios-container button {
-    border: none;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px gray;
-    background-color: white;
-    font-size: 1.4rem;
-    height: 50px;
+    min-height: 50px;
 
+    padding: 10px;
+
+    border: none;
+
+    border-radius: var(--raio);
+
+    background-color: var(--branco);
+
+    color: var(--texto);
+
+    font-size: 1.1rem;
+
+    box-shadow: var(--sombra);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
 
 #horarios-container button:hover {
-    background-color: gray;
-    transform: scale(1.05);
-    color: white;
-    cursor: pointer;
+    background-color: var(--mar-profundo);
 
-}
+    color: var(--branco);
 
-.card-escolha {
-    padding: 20px;
-
-    width: 150px;
-    height: 80px;
-
-    border: none;
-    background-color: white;
-    box-shadow: 4px 4px 8px gray;
-    color: black;
-    border-radius: 8px;
-
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-#horarios-container button.selecionado:hover {
-    transform: scale(1.05);
-
-    color: white;
-    cursor: pointer;
+    transform: translateY(-2px);
 }
 
 #horarios-container button.selecionado {
     opacity: 1;
     visibility: visible;
+
     border: 2px solid var(--laranja-por-do-sol);
+
     background-color: var(--laranja-por-do-sol);
-    color: white;
-    transform: scale(1.05);
+
+    color: var(--branco);
+
+    transform: translateY(-2px);
 }
 
-#btn-etapa3 {
-    width: 100%;
-    max-width: 250px;
+#horarios-container button.selecionado:hover {
+    background-color: var(--laranja-por-do-sol);
 
+    color: var(--branco);
 
-    min-height: 50px;
-
-    color: black;
-
-    font-weight: bold;
-    font-size: large;
-
-    border-radius: 10px;
-    border: none;
-
-    box-shadow: 2px 2px 10px gray;
-
-    transition: all 0.3s ease-in-out;
+    transform: translateY(-3px);
 }
-
-#btn-etapa3:hover {
-    background-color: var(--mar-profundo);
-
-    transform: scale(1.05);
-
-    color: white;
-
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#btn-voltar-etapa3 {
-    margin-right: 20px;
-    width: 100%;
-    max-width: 250px;
-
-
-    min-height: 50px;
-
-    color: black;
-
-    font-weight: bold;
-    font-size: large;
-
-    border-radius: 10px;
-    border: none;
-
-    box-shadow: 2px 2px 10px gray;
-
-    transition: all 0.3s ease-in-out;
-}
-
-#btn-voltar-etapa3:hover {
-    background-color: var(--mar-profundo);
-
-    transform: scale(1.05);
-
-    color: white;
-
-    font-weight: bold;
-    cursor: pointer;
-}
-
-
-#btn-etapa3 {
-    width: 100%;
-    max-width: 250px;
-
-
-    min-height: 50px;
-
-    color: black;
-
-    font-weight: bold;
-    font-size: large;
-
-    border-radius: 10px;
-    border: none;
-
-    box-shadow: 2px 2px 10px gray;
-
-    transition: all 0.3s ease-in-out;
-}
-
-#btn-etapa3:hover {
-    background-color: var(--mar-profundo);
-
-    transform: scale(1.05);
-
-    color: white;
-
-    font-weight: bold;
-    cursor: pointer;
-}
-
-
-/*ETAPA 4.JS 
-estilização do resumo da reserva e confirmação*/
 
 #resumo-reserva {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-    width: 20%;
-
-    max-width: 600px;
+    width: min(90%, 600px);
 
     margin: 30px auto;
 
     padding: 25px;
 
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
     border-radius: 12px;
 
-    box-shadow: 4px 4px 12px gray;
+    box-shadow: var(--sombra);
+
+    text-align: center;
 
     text-transform: uppercase;
-
 }
 
 .acoes-resumo {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
     text-align: center;
 }
 
-#btn-voltar-etapa4 {
-    margin-right: 20px;
-    width: 100%;
-    max-width: 250px;
-
-
-    min-height: 50px;
-
-    color: black;
-
-    font-weight: bold;
-    font-size: large;
-
-    border-radius: 10px;
-    border: none;
-
-    box-shadow: 2px 2px 10px gray;
-
-    transition: all 0.3s ease-in-out;
-}
-
-#btn-voltar-etapa4:hover {
-    background-color: var(--mar-profundo);
-
-    transform: scale(1.05);
-
-    color: white;
-
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#btn-confirmar-reserva {
-    margin-right: 20px;
-    width: 100%;
-    max-width: 250px;
-
-
-    min-height: 50px;
-
-    color: black;
-
-    font-weight: bold;
-    font-size: large;
-
-    border-radius: 10px;
-    border: none;
-
-    box-shadow: 2px 2px 10px gray;
-
-    transition: all 0.3s ease-in-out;
-}
-
-#btn-confirmar-reserva:hover {
-    background-color: var(--mar-profundo);
-
-    transform: scale(1.05);
-
-    color: white;
-
-    font-weight: bold;
-    cursor: pointer;
-}
-
-
-
-
-
-
-
 @media (max-width: 900px) {
 
-    /* AJUSTE:
-       3 colunas passam para 2 */
-    .card-container {
-        grid-template-columns: repeat(2, 200px);
+    .cards-container {
+        width: min(92%, 700px);
     }
 
+    #horarios-container {
+        width: min(92%, 700px);
+
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-escolha {
+        width: 150px;
+    }
 }
-
-
 
 @media (max-width: 600px) {
 
-    header {
-        font-size: 1em;
+
+    .titulo-etapa,
+    .titulo-etapa-2 {
+        margin: 15px 10px;
+
+        font-size: 1.3rem;
     }
 
-    #navegacao-rapida {
-        justify-content: center;
+    .progresso {
+        width: 95%;
 
-        gap: 12px;
+        gap: 5px;
+
+        margin: 20px auto;
     }
 
-    header a {
-        padding-left: 5px;
+    .linha {
+        width: 100%;
+
+        max-width: 40px;
     }
 
+    .passo p {
+        max-width: 70px;
 
+        line-height: 1.2;
+    }
 
+    .cards-container {
+        width: 95%;
 
-    .card-container {
-        /* AJUSTE:
-           uma coluna no celular */
-        grid-template-columns: 1fr;
+        padding: 10px;
+
+        gap: 15px;
+    }
+
+    .card-escolha {
+        width: min(100%, 300px);
+
+        min-height: 65px;
 
         padding: 15px;
     }
-
-    .card {
-        width: 100%;
-
-        max-width: 320px;
-
-        margin: 0 auto;
-    }
-
-
-
-
-    .progress-container {
-        width: calc(100% - 30px);
-
-        max-width: 500px;
-
-        margin: 25px auto;
-    }
-
-    .step {
-        width: 30px;
-        height: 30px;
-
-        font-size: 0.85rem;
-    }
-
-    .progress-container::before {
-        height: 3px;
-    }
-
-
-
 
     .calendario {
         width: calc(100% - 30px);
@@ -642,100 +538,32 @@ estilização do resumo da reserva e confirmação*/
         gap: 3px;
     }
 
-    .dias div {
-        padding: 6px;
+    .dia {
+        padding: 8px 4px;
 
         min-height: 38px;
 
         font-size: 0.9rem;
     }
 
-
-
-    .horarios-container {
+    #horarios-container {
         width: calc(100% - 30px);
 
-        padding: 15px;
-    }
+        grid-template-columns: repeat(2, 1fr);
 
-    .horarios {
         gap: 10px;
     }
 
-    .horarios label {
-        min-width: 70px;
-        min-height: 45px;
+    #horarios-container button {
+        min-height: 48px;
+
+        font-size: 1rem;
     }
-
-
-
-
-    .escolha-quadra {
-        flex-direction: column;
-
-        width: calc(100% - 30px);
-
-        padding: 15px;
-    }
-
-    .escolha-quadra label {
-        width: 100%;
-
-        max-width: 300px;
-    }
-
-
-
-
-
-    .dados-pessoais {
-        width: calc(100% - 30px);
-
-        padding: 20px;
-    }
-
-    .dados-pessoais legend {
-        font-size: 1.15em;
-    }
-
-
-
-    .resumo-reserva {
-        width: calc(100% - 30px);
-
-        padding: 20px;
-    }
-
-    .item-resumo {
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 5px;
-    }
-
-    .item-resumo span {
-        text-align: left;
-    }
-
-    .acoes-resumo {
-
-        flex-direction: column;
-
-        align-items: center;
-    }
-
-    .acoes-resumo button {
-        width: 100%;
-
-        max-width: 300px;
-    }
-
-
 
     .seguir-progresso {
         width: calc(100% - 30px);
+
+        margin: 25px auto;
     }
 
     .seguir-progresso .btn-prosseguir {
@@ -744,4 +572,78 @@ estilização do resumo da reserva e confirmação*/
         max-width: 300px;
     }
 
+    #btn-voltar-etapa2,
+    #btn-voltar-etapa3,
+    #btn-voltar-etapa4,
+    #btn-etapa3,
+    #btn-confirmar-reserva {
+        width: 100%;
+
+        max-width: 300px;
+
+        margin: 0;
+    }
+
+    #resumo-reserva {
+        width: calc(100% - 30px);
+
+        padding: 20px;
+
+        margin: 20px auto;
+    }
+
+    .acoes-resumo {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .acoes-resumo button {
+        width: 100%;
+
+        max-width: 300px;
+    }
+}
+
+
+
+@media (max-width: 380px) {
+
+    .passo p {
+        font-size: 0.6rem;
+    }
+
+    .linha {
+        max-width: 25px;
+    }
+
+    .calendario {
+        width: calc(100% - 20px);
+
+        padding: 10px;
+    }
+
+    .dia {
+        padding: 7px 2px;
+
+        font-size: 0.8rem;
+    }
+
+    #horarios-container {
+        width: calc(100% - 20px);
+
+        gap: 8px;
+    }
+
+    #horarios-container button {
+        min-height: 45px;
+
+        font-size: 0.9rem;
+    }
+
+    #resumo-reserva {
+        width: calc(100% - 20px);
+
+        padding: 15px;
+    }
 }
