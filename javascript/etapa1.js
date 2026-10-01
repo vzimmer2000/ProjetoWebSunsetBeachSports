@@ -2,7 +2,6 @@
 /* 
    RENDERIZA MODALIDADES
 */
-
 function renderizarModalidades() {
 
     const container =

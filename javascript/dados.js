@@ -1,3 +1,7 @@
+/*
+Arquivo responsável por guardr informações gerais que são utilizadas em outros arquivos
+*/
+
 const reservaAtual = {
     modalidade: null,
     quadra: null,
@@ -38,10 +42,6 @@ const quadras = [
 
     }
 ];
-
-/* =========================================================
-   HORÁRIOS DA ETAPA 3
-========================================================= */
 
 const horarios = [
     "08:00",

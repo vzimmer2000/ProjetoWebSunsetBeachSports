@@ -1,4 +1,7 @@
-
+/* 
+Arquivo responsável por gerenciar o usuário logado
+funcoes de iniciar sessão, verificar quem está logado e efetuar logout
+*/
 function iniciarSessao(usuario) {
 
     localStorage.setItem(
@@ -19,7 +22,6 @@ function usuarioEstaLogado() {
     return localStorage.getItem("usuarioLogado") !== null;
 }
 
-//implementado if para corrigir c caminho reativo logout aparece em index, info e agendamentos 
 function logout() {
 
     localStorage.removeItem("usuarioLogado");

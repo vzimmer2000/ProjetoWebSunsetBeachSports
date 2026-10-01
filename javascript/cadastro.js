@@ -1,3 +1,7 @@
+/*
+Arquivo responsável por cpturar os dados inseridos e salvar no localStorage
+*/
+
 const formularioCadastro = document.getElementById("dados-cadastro");
 
 formularioCadastro.addEventListener("submit", function (event) {
@@ -18,7 +22,6 @@ formularioCadastro.addEventListener("submit", function (event) {
         }, 1000);
         return;
     }
-
     const containerMensagemCadastro = document.getElementById("container-mensagem-cadastro");
     containerMensagemCadastro.innerHTML =
         `   
@@ -26,7 +29,6 @@ formularioCadastro.addEventListener("submit", function (event) {
             <p>CADASTRO REALIZADO COM SUCESSO, REDIRECIONANDO PARA LOGIN...</p>
         </div>
         `;
-
     formularioCadastro.reset();
     setTimeout(() => {
         window.location.href = "login.html";
