@@ -1,0 +1,379 @@
+/* =========================================================
+   PÁGINA INICIAL
+========================================================= */
+
+main {
+    width: 100%;
+    min-height: 87dvh;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+}
+
+.desfoque {
+    filter: blur(5px);
+    pointer-events: none;
+
+    user-select: none;
+
+}
+
+/* 
+   MENSAGEM no topo da tela de usuário logado
+ */
+
+#container-usuario-logado {
+
+    display: flex;
+    flex-direction: column;
+
+
+    width: 90%;
+    max-width: 400px;
+    max-height: 110px;
+    margin: auto;
+
+    align-items: center;
+    justify-content: center;
+
+
+    box-sizing: border-box;
+    padding: 6px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 2px solid whitesmoke;
+    background-color: whitesmoke;
+}
+
+p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+#btn-logout,
+#btn-login {
+    text-align: center;
+    text-transform: uppercase;
+
+    max-width: 120px;
+    padding: 10px;
+
+    border: 2px solid var(--mar-profundo);
+    border-radius: 7px;
+
+    background-color: var(--mar-profundo);
+
+    color: var(--branco);
+
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+#btn-logout:hover {
+    background-color: var(--laranja-por-do-sol);
+
+    border-color: var(--laranja-por-do-sol);
+
+    transform: translateY(-2px);
+}
+
+
+#btn-logout:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   CONTAINER PRINCIPAL DA HOME
+========================================================= */
+
+.container-home {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    display: block;
+
+    width: min(45vw, 330px);
+
+    height: auto;
+
+    margin: 10px 0 25px;
+}
+
+
+/* =========================================================
+   ÍCONES
+========================================================= */
+
+.icone {
+    width: 20px;
+    height: 20px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   NAVEGAÇÃO
+========================================================= */
+
+.navegacao-home {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   BOTÕES DA NAVEGAÇÃO
+========================================================= */
+
+.navegacao-home a {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    height: 40px;
+
+    padding: 10px 15px;
+
+    box-sizing: border-box;
+
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(135deg,
+            var(--branco),
+            #f8f8f8);
+
+    color: var(--mar-profundo);
+
+    font-weight: bold;
+
+    box-shadow:
+        2px 3px 6px rgba(0, 0, 0, 0.18);
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.navegacao-home a:hover {
+    background-color: var(--laranja-por-do-sol);
+
+    background-image: none;
+
+    color: var(--branco);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   ÍCONE NO HOVER
+========================================================= */
+
+.navegacao-home a:hover .icone {
+    filter: brightness(0) invert(1);
+}
+
+.rodape {
+    width: 100%;
+
+    min-height: 65px;
+
+    padding: 10px 0;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    background-color: var(--mar-profundo);
+
+    color: var(--branco);
+
+    flex-shrink: 0;
+}
+
+.container-info-rodape {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+.rodape p {
+    margin: 2px 0;
+
+    font-size: 11px;
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .logo {
+        width: min(50vw, 300px);
+
+        margin-bottom: 22px;
+    }
+
+    .navegacao-home {
+        gap: 10px;
+    }
+
+    .navegacao-home a {
+        padding: 10px 12px;
+
+        font-size: 0.9rem;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    main {
+        min-height: 100dvh;
+    }
+
+
+    /* -------------------------
+       PERFIL
+    ------------------------- */
+
+    #perfil {
+        margin-top: 8px;
+    }
+
+
+    .card-perfil {
+        padding: 10px 14px;
+
+        gap: 10px;
+    }
+
+
+    .card-perfil h2 {
+        font-size: 0.95rem;
+    }
+
+
+    #logout {
+        padding: 8px 15px;
+
+        font-size: 0.8rem;
+    }
+
+
+    /* -------------------------
+       CONTAINER
+    ------------------------- */
+
+    .container-home {
+        width: 90%;
+
+        justify-content: center;
+    }
+
+
+    /* -------------------------
+       LOGO
+    ------------------------- */
+
+    .logo {
+        width: min(65vw, 250px);
+
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+
+
+    /* -------------------------
+       NAVEGAÇÃO
+    ------------------------- */
+
+    .navegacao-home {
+        flex-direction: column;
+
+        width: 100%;
+
+        gap: 9px;
+    }
+
+
+    .navegacao-home a {
+        width: 100%;
+
+        max-width: 320px;
+
+        min-height: 44px;
+
+        padding: 10px 14px;
+    }
+
+
+    .icone {
+        width: 20px;
+        height: 20px;
+    }
+
+}

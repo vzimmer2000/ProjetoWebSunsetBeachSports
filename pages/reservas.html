@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Minhas Reservas</title>
+
+    <link rel="stylesheet" href="../CSS/global.css" />
+
+    <link rel="stylesheet" href="../CSS/reservas.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav id="navegacao-rapida">
+        <img class="logo-header" src="../assets/images/logo.png" />
+        <a href="/index.html">HOME</a>
+        <a href="agendamento.html">AGENDAR</a>
+        <a href="reservas.html">RESERVAS</a>
+        <button id="btn-logout">LOGOUT</button>
+      </nav>
+    </header>
+    <main>
+      <section class="reservas">
+        <h1>MINHAS RESERVAS</h1>
+
+        <div id="lista-reservas" class="lista-reservas"></div>
+
+        <div id="sem-reservas" class="sem-reservas"></div>
+      </section>
+    </main>
+
+    <script src="../javascript/auth.js"></script>
+
+    <script src="../javascript/dados.js" defer></script>
+
+    <script src="../javascript/main.js" defer></script>
+
+    <script src="../javascript/reservas.js" defer></script>
+
+    <script src="../javascript/pagReservas.js" defer></script>
+  </body>
+</html>

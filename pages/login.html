@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PÁGINA DE LOGIN</title>
+    <link rel="stylesheet" href="../CSS/global.css" />
+    <link rel="stylesheet" href="../CSS/login.css" />
+  </head>
+  <body>
+    <main>
+      <h2>Login</h2>
+      <form id="form-login">
+        <input type="tel" id="login-telefone" placeholder="telefone" required />
+        <!--<input type="nome" id="login-nome" placeholder="Nome" required />-->
+        <input type="password" id="login-senha" placeholder="Senha" required />
+        <button type="submit">Entrar</button>
+        <!--adicionado o <a> envlvendo o botão para ir ao cadastro+-->
+        <a href="./cadastro.html"><button type="button">Cadastro</button></a>
+      </form>
+      <div id="mensagem-login"></div>
+    </main>
+    <footer class="rodape">
+      <div class="container-info-rodape">
+        <p>Sunset Beach Sports</p>
+        <p>R. Olavo Bilac 261</p>
+        <p>(54)99185-5959</p>
+        <p>contato@SunsetBeachSports.com</p>
+      </div>
+    </footer>
+    <script src="../javascript/usuarios.js"></script>
+    <script src="../javascript/auth.js"></script>
+    <script src="../javascript/login.js"></script>
+  </body>
+</html>

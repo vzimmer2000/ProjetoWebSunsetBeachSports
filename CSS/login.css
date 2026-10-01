@@ -1,0 +1,329 @@
+/*Main sobrescreve o global*/
+
+main {
+    width: 100%;
+    max-width: 450px;
+
+    margin: 0 auto;
+
+    padding: 30px 20px;
+
+    box-sizing: border-box;
+
+    flex: 1;
+}
+
+/*titulo antes do formulário*/
+main h2 {
+    margin: 0 0 30px;
+
+    text-align: center;
+
+    font-size: 2rem;
+
+    color: var(--mar-profundo);
+
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+
+/*FORMULÁRIO*/
+
+#form-login {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    padding: 35px;
+
+    background-color: var(--branco);
+
+    border: 1px solid lightgray;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+
+    box-sizing: border-box;
+}
+
+
+/* 
+   INPUTS
+*/
+
+#form-login input {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    box-sizing: border-box;
+
+    border: 2px solid lightgray;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background-color: var(--branco);
+
+    color: var(--mar-profundo);
+
+    font-size: 1rem;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+
+#form-login input::placeholder {
+    color: darkgray;
+}
+
+
+/*
+   INPUT EM FOCO
+ */
+
+#form-login input:focus {
+    border-color: var(--azul-do-mar);
+
+    box-shadow:
+        0 0 0 3px rgba(0, 102, 204, 0.15);
+}
+
+
+/* botão de entrar e de cadastro */
+
+#form-login button {
+    width: 100%;
+
+    margin-top: 5px;
+
+    padding: 14px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: var(--mar-profundo);
+
+    color: var(--branco);
+
+    font-size: 1rem;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* 
+   HOVER
+ */
+
+#form-login button:hover {
+    background-color: var(--laranja-por-do-sol);
+
+    color: var(--branco);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(255, 102, 0, 0.30);
+}
+
+
+/* 
+   BOTÃO AO CLICAR
+*/
+
+#form-login button:active {
+    transform: translateY(0);
+}
+
+
+/* 
+   MENSAGEM
+*/
+
+#mensagem-login p {
+    border: 2px solid var(--palmeira);
+    border-radius: 4px;
+
+    background-color: green;
+
+    color: var(--branco);
+    min-height: 25px;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+.rodape {
+    width: 100%;
+
+    min-height: 65px;
+
+    padding: 10px 0;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    background-color: var(--mar-profundo);
+
+    color: var(--branco);
+
+    flex-shrink: 0;
+}
+
+.container-info-rodape {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+.rodape p {
+    margin: 2px 0;
+
+    font-size: 11px;
+
+    line-height: 1.3;
+}
+
+/*
+   RESPONSIVIDADE
+   TABLET
+ */
+
+@media (max-width: 768px) {
+
+    main {
+        max-width: 500px;
+
+        padding: 25px 18px;
+    }
+
+    main h2 {
+        font-size: 1.8rem;
+
+        margin-bottom: 25px;
+    }
+
+    #form-login {
+        padding: 30px 25px;
+    }
+
+}
+
+
+/*
+   RESPONSIVIDADE
+   CELULAR
+ */
+
+@media (max-width: 480px) {
+
+    main {
+        width: 100%;
+
+        padding: 20px 15px;
+    }
+
+    main h2 {
+        font-size: 1.6rem;
+
+        margin-bottom: 20px;
+    }
+
+    #form-login {
+        width: 100%;
+
+        padding: 25px 18px;
+
+        gap: 15px;
+
+        border-radius: 12px;
+    }
+
+    #form-login input {
+        padding: 13px;
+
+        font-size: 0.95rem;
+    }
+
+    #form-login button {
+        padding: 13px;
+
+        font-size: 0.95rem;
+    }
+
+    #mensagem-login p {
+        font-size: 0.9rem;
+
+        padding: 7px;
+    }
+
+}
+
+
+/* 
+   CELULARES PEQUENOS
+  */
+
+@media (max-width: 360px) {
+
+    main {
+        padding: 15px 10px;
+    }
+
+    main h2 {
+        font-size: 1.4rem;
+
+        margin-bottom: 18px;
+    }
+
+    #form-login {
+        padding: 20px 15px;
+
+        gap: 13px;
+
+        border-radius: 10px;
+    }
+
+    #form-login input {
+        padding: 12px;
+
+        font-size: 0.9rem;
+    }
+
+    #form-login button {
+        padding: 12px;
+
+        font-size: 0.9rem;
+    }
+
+}

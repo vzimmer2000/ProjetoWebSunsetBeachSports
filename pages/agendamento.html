@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <link rel="stylesheet" href="../CSS/global.css" />
+    <link href="../CSS/agendamento.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AGENDAMENTOS</title>
+  </head>
+  <body>
+    <header>
+      <nav id="navegacao-rapida">
+        <img class="logo-header" src="../assets/images/logo.png" />
+        <a href="/index.html">HOME</a>
+        <a href="agendamento.html">AGENDAR</a>
+        <a href="reservas.html">RESERVAS</a>
+        <button id="btn-logout">LOGOUT</button>
+      </nav>
+    </header>
+    <main>
+      <div class="progresso">
+        <div class="passo ativo" data-etapa="1">
+          <span>1</span>
+          <p>Escolha</p>
+        </div>
+
+        <div class="linha"></div>
+
+        <div class="passo" data-etapa="2">
+          <span>2</span>
+          <p>Data</p>
+        </div>
+
+        <div class="linha"></div>
+
+        <div class="passo" data-etapa="3">
+          <span>3</span>
+          <p>Horário</p>
+        </div>
+
+        <div class="linha"></div>
+
+        <div class="passo" data-etapa="4">
+          <span>4</span>
+          <p>Resumo</p>
+        </div>
+      </div>
+      <section id="etapa1" class="ativo">
+        <h2 class="titulo-etapa">ESCOLHA A MODALIDADE</h2>
+
+        <div class="cards-container" id="modalidades-container"></div>
+
+        <h2 class="titulo-etapa">ESCOLHA A QUADRA</h2>
+
+        <div class="cards-container" id="quadras-container"></div>
+
+        <div class="seguir-progresso">
+          <button type="button" class="btn-prosseguir" id="btn-etapa1">
+            PROSSEGUIR
+          </button>
+        </div>
+      </section>
+
+      <!-- Etapa 2: Calendário -->
+      <section id="etapa2">
+        <h2 class="titulo-etapa">ESCOLHA UMA DATA</h2>
+
+        <div class="calendario">
+          <div class="mes" id="mes"></div>
+
+          <div class="nav">
+            <button type="button" id="mes-anterior">◀</button>
+            <button type="button" id="mes-proximo">▶</button>
+          </div>
+
+          <div class="dias" id="dias"></div>
+        </div>
+
+        <div class="seguir-progresso">
+          <button type="button" class="btn-voltar" id="btn-voltar-etapa2">
+            VOLTAR
+          </button>
+
+          <button type="button" class="btn-prosseguir" id="btn-etapa2">
+            PROSSEGUIR
+          </button>
+        </div>
+      </section>
+
+      <!------------------------------------------------------->
+      <section id="etapa3">
+        <h2 class="titulo-etapa">ESCOLHA O HORÁRIO</h2>
+
+        <div class="horarios-container" id="horarios-container"></div>
+
+        <div class="seguir-progresso">
+          <button type="button" id="btn-voltar-etapa3">VOLTAR</button>
+
+          <button type="button" id="btn-etapa3">PROSSEGUIR</button>
+        </div>
+      </section>
+
+      <section id="etapa4">
+        <h2 class="titulo-etapa">RESUMO DA RESERVA</h2>
+
+        <div id="resumo-reserva"></div>
+
+        <div class="acoes-resumo">
+          <button type="button" id="btn-voltar-etapa4">VOLTAR</button>
+
+          <button type="button" id="btn-confirmar-reserva">
+            CONFIRMAR RESERVA
+          </button>
+        </div>
+      </section>
+    </main>
+    <script src="../javascript/auth.js" defer></script>
+    <script src="../javascript/main.js" defer></script>
+    <script src="../javascript/dados.js" defer></script>
+    <script src="../javascript/reservas.js" defer></script>
+    <script src="../javascript/etapa1.js" defer></script>
+    <script src="../javascript/etapa2.js" defer></script>
+    <script src="../javascript/etapa3.js" defer></script>
+    <script src="../javascript/etapa4.js" defer></script>
+  </body>
+</html>

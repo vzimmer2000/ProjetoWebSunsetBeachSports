@@ -1,0 +1,747 @@
+:root {
+    --sol: #FFCC00;
+    --laranja-por-do-sol: #FF6600;
+    --azul-do-mar: #0066CC;
+    --mar-profundo: #010829;
+    --palmeira: #228B22;
+    --areia-fina: beige;
+    --branco: white;
+}
+
+body {
+
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+main section {
+    display: none;
+}
+
+main section.ativo {
+    display: block;
+}
+
+/*ESTILIZAÇÃO DA BARRA DE PROGRESSO QUE FICA ACIMA DA PÁGINA*/
+.progresso {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px auto;
+    max-width: 700px;
+}
+
+.passo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.45;
+}
+
+.passo span {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    border: 2px solid gray;
+
+    font-weight: bold;
+}
+
+.passo p {
+    margin: 6px 0 0;
+    font-size: 0.8rem;
+}
+
+.passo.ativo {
+    opacity: 1;
+}
+
+.linha {
+    width: 60px;
+    height: 2px;
+    background: gray;
+    opacity: 0.3;
+}
+
+/*TITULOS PRINCIPAIS */
+.titulo-etapa {
+    text-align: center;
+}
+
+
+.titulo-etapa-2 {
+
+    text-align: center;
+}
+
+/*QUADRA E MODALIDADE*/
+.cards-container {
+    text-align: center;
+
+    display: flex;
+    justify-self: center;
+    align-items: center;
+
+    flex-direction: row;
+    justify-content: space-around;
+
+    height: 175px;
+    width: 50%;
+    align-items: center;
+    padding: 10px 10px;
+
+}
+
+.card-escolha {
+    padding: 20px;
+
+    width: 150px;
+    height: 80px;
+
+    border: none;
+    background-color: white;
+    box-shadow: 4px 4px 8px gray;
+    color: black;
+    border-radius: 8px;
+
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.card-escolha:hover {
+    background-color: gray;
+
+    transform: scale(1.05);
+
+    color: white;
+    cursor: pointer;
+}
+
+.card-escolha.selecionado {
+    opacity: 1;
+    visibility: visible;
+    border: 2px solid var(--laranja-por-do-sol);
+    background-color: var(--laranja-por-do-sol);
+    color: white;
+    transform: scale(1.05);
+}
+
+.seguir-progresso {
+    display: flexbox;
+    justify-self: center;
+    justify-content: space-around;
+    width: 60%;
+    text-align: center;
+
+}
+
+.seguir-progresso .btn-prosseguir {
+    width: 100%;
+    max-width: 250px;
+
+
+    min-height: 50px;
+
+    color: black;
+
+    font-weight: bold;
+    font-size: large;
+
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 2px 2px 10px gray;
+
+    transition: all 0.3s ease-in-out;
+}
+
+.seguir-progresso .btn-prosseguir:hover {
+    background-color: var(--mar-profundo);
+
+    transform: scale(1.05);
+
+    color: white;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*ETAPA 2.JS 
+ESTILIZAÇÃO DO CALENDÁRIO
+*/
+.calendario {
+
+    width: calc(100% - 30px);
+
+    max-width: 450px;
+
+    margin: 20px auto;
+
+    padding: 20px;
+
+    border: 1px solid lightgray;
+
+    border-radius: 10px;
+
+    box-shadow: 4px 4px 8px gray;
+
+    font-family: Arial, sans-serif;
+
+    text-align: center;
+}
+
+.mes {
+    font-size: 1.2em;
+
+    font-weight: bold;
+
+    margin-bottom: 5px;
+}
+
+.nav {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+}
+
+.nav button {
+    background-color: var(--azul-do-mar);
+
+    color: white;
+
+    border: none;
+
+
+    min-width: 40px;
+    min-height: 40px;
+
+    padding: 5px 10px;
+
+    cursor: pointer;
+
+    border-radius: 4px;
+}
+
+.nav button:hover {
+    background-color: var(--azul-do-mar);
+}
+
+
+.dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.dia {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+.dia.desabilitado {
+    background-color: #eee;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.dia.selecionado {
+    background-color: #4caf50;
+    color: white;
+}
+
+.dias div.vazio {
+    border: none;
+
+    background: transparent;
+}
+
+#btn-voltar-etapa2 {
+    margin-right: 20px;
+    width: 100%;
+    max-width: 250px;
+
+
+    min-height: 50px;
+
+    color: black;
+
+    font-weight: bold;
+    font-size: large;
+
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 2px 2px 10px gray;
+
+    transition: all 0.3s ease-in-out;
+}
+
+#btn-voltar-etapa2:hover {
+    background-color: var(--mar-profundo);
+
+    transform: scale(1.05);
+
+    color: white;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*ETAPA 3.JS 
+ESTILIZAÇÃO DA GRADE DE HORÁRIOS*/
+#horarios-container {
+    margin-top: 20px;
+
+    display: grid;
+
+    grid-template-rows: repeat(4, 1fr);
+
+    grid-template-columns: repeat(4, 1fr);
+
+    width: 50%;
+    height: 56vh;
+    gap: 10px;
+
+    justify-self: center;
+}
+
+#horarios-container button {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px gray;
+    background-color: white;
+    font-size: 1.4rem;
+    height: 50px;
+
+}
+
+#horarios-container button:hover {
+    background-color: gray;
+    transform: scale(1.05);
+    color: white;
+    cursor: pointer;
+
+}
+
+.card-escolha {
+    padding: 20px;
+
+    width: 150px;
+    height: 80px;
+
+    border: none;
+    background-color: white;
+    box-shadow: 4px 4px 8px gray;
+    color: black;
+    border-radius: 8px;
+
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#horarios-container button.selecionado:hover {
+    transform: scale(1.05);
+
+    color: white;
+    cursor: pointer;
+}
+
+#horarios-container button.selecionado {
+    opacity: 1;
+    visibility: visible;
+    border: 2px solid var(--laranja-por-do-sol);
+    background-color: var(--laranja-por-do-sol);
+    color: white;
+    transform: scale(1.05);
+}
+
+#btn-etapa3 {
+    width: 100%;
+    max-width: 250px;
+
+
+    min-height: 50px;
+
+    color: black;
+
+    font-weight: bold;
+    font-size: large;
+
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 2px 2px 10px gray;
+
+    transition: all 0.3s ease-in-out;
+}
+
+#btn-etapa3:hover {
+    background-color: var(--mar-profundo);
+
+    transform: scale(1.05);
+
+    color: white;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#btn-voltar-etapa3 {
+    margin-right: 20px;
+    width: 100%;
+    max-width: 250px;
+
+
+    min-height: 50px;
+
+    color: black;
+
+    font-weight: bold;
+    font-size: large;
+
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 2px 2px 10px gray;
+
+    transition: all 0.3s ease-in-out;
+}
+
+#btn-voltar-etapa3:hover {
+    background-color: var(--mar-profundo);
+
+    transform: scale(1.05);
+
+    color: white;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+#btn-etapa3 {
+    width: 100%;
+    max-width: 250px;
+
+
+    min-height: 50px;
+
+    color: black;
+
+    font-weight: bold;
+    font-size: large;
+
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 2px 2px 10px gray;
+
+    transition: all 0.3s ease-in-out;
+}
+
+#btn-etapa3:hover {
+    background-color: var(--mar-profundo);
+
+    transform: scale(1.05);
+
+    color: white;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/*ETAPA 4.JS 
+estilização do resumo da reserva e confirmação*/
+
+#resumo-reserva {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    width: 20%;
+
+    max-width: 600px;
+
+    margin: 30px auto;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    box-shadow: 4px 4px 12px gray;
+
+    text-transform: uppercase;
+
+}
+
+.acoes-resumo {
+    text-align: center;
+}
+
+#btn-voltar-etapa4 {
+    margin-right: 20px;
+    width: 100%;
+    max-width: 250px;
+
+
+    min-height: 50px;
+
+    color: black;
+
+    font-weight: bold;
+    font-size: large;
+
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 2px 2px 10px gray;
+
+    transition: all 0.3s ease-in-out;
+}
+
+#btn-voltar-etapa4:hover {
+    background-color: var(--mar-profundo);
+
+    transform: scale(1.05);
+
+    color: white;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#btn-confirmar-reserva {
+    margin-right: 20px;
+    width: 100%;
+    max-width: 250px;
+
+
+    min-height: 50px;
+
+    color: black;
+
+    font-weight: bold;
+    font-size: large;
+
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 2px 2px 10px gray;
+
+    transition: all 0.3s ease-in-out;
+}
+
+#btn-confirmar-reserva:hover {
+    background-color: var(--mar-profundo);
+
+    transform: scale(1.05);
+
+    color: white;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+@media (max-width: 900px) {
+
+    /* AJUSTE:
+       3 colunas passam para 2 */
+    .card-container {
+        grid-template-columns: repeat(2, 200px);
+    }
+
+}
+
+
+
+@media (max-width: 600px) {
+
+    header {
+        font-size: 1em;
+    }
+
+    #navegacao-rapida {
+        justify-content: center;
+
+        gap: 12px;
+    }
+
+    header a {
+        padding-left: 5px;
+    }
+
+
+
+
+    .card-container {
+        /* AJUSTE:
+           uma coluna no celular */
+        grid-template-columns: 1fr;
+
+        padding: 15px;
+    }
+
+    .card {
+        width: 100%;
+
+        max-width: 320px;
+
+        margin: 0 auto;
+    }
+
+
+
+
+    .progress-container {
+        width: calc(100% - 30px);
+
+        max-width: 500px;
+
+        margin: 25px auto;
+    }
+
+    .step {
+        width: 30px;
+        height: 30px;
+
+        font-size: 0.85rem;
+    }
+
+    .progress-container::before {
+        height: 3px;
+    }
+
+
+
+
+    .calendario {
+        width: calc(100% - 30px);
+
+        padding: 15px;
+    }
+
+    .dias {
+        gap: 3px;
+    }
+
+    .dias div {
+        padding: 6px;
+
+        min-height: 38px;
+
+        font-size: 0.9rem;
+    }
+
+
+
+    .horarios-container {
+        width: calc(100% - 30px);
+
+        padding: 15px;
+    }
+
+    .horarios {
+        gap: 10px;
+    }
+
+    .horarios label {
+        min-width: 70px;
+        min-height: 45px;
+    }
+
+
+
+
+    .escolha-quadra {
+        flex-direction: column;
+
+        width: calc(100% - 30px);
+
+        padding: 15px;
+    }
+
+    .escolha-quadra label {
+        width: 100%;
+
+        max-width: 300px;
+    }
+
+
+
+
+
+    .dados-pessoais {
+        width: calc(100% - 30px);
+
+        padding: 20px;
+    }
+
+    .dados-pessoais legend {
+        font-size: 1.15em;
+    }
+
+
+
+    .resumo-reserva {
+        width: calc(100% - 30px);
+
+        padding: 20px;
+    }
+
+    .item-resumo {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 5px;
+    }
+
+    .item-resumo span {
+        text-align: left;
+    }
+
+    .acoes-resumo {
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .acoes-resumo button {
+        width: 100%;
+
+        max-width: 300px;
+    }
+
+
+
+    .seguir-progresso {
+        width: calc(100% - 30px);
+    }
+
+    .seguir-progresso .btn-prosseguir {
+        width: 100%;
+
+        max-width: 300px;
+    }
+
+}

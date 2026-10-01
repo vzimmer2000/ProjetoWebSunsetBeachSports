@@ -1,0 +1,89 @@
+/*estilod comuns pra todas as páginas e variáveis*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --sol: #FFCC00;
+    --laranja-por-do-sol: #FF6600;
+    --azul-do-mar: #0066CC;
+    --mar-profundo: #010829;
+    --palmeira: #228B22;
+    --areia-fina: beige;
+    --branco: white;
+}
+
+
+html,
+body {
+    font-family: 'Franklin Gothic Medium', sans-serif;
+    width: 100%;
+    min-height: 100%;
+
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/*CABEÇALHO DA PÁGINA, COM UM NAV ABAIXO 
+PARA VOLTAR A HOME FIR NA PÁGIA E IR A SEÇÃO DE AGENDAMENTOS*/
+
+
+header {
+    color: var(--areia-fina);
+    font-size: 1.2em;
+
+    padding: 10px;
+
+    border: 2px solid var(--laranja-por-do-sol);
+    border-radius: 4px;
+
+    background-color: var(--laranja-por-do-sol);
+
+    width: 100%;
+}
+
+#navegacao-rapida {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+header .logo-header {
+    max-height: 40px;
+    margin: 0;
+}
+
+header a {
+    padding-left: 10px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+header button {
+    margin-left: auto;
+
+    text-align: center;
+    border-radius: 4px;
+    height: 30px;
+    width: 80px;
+    border: none;
+    align-self: center;
+    justify-self: right;
+}
+
+header button:hover {
+    cursor: pointer;
+    background-color: var(--mar-profundo);
+    color: var(--branco);
+}

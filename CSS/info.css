@@ -1,0 +1,412 @@
+/*MAIN E BODY FALTANTES AJUSTAR CONFORME NECESSÁRIO */
+:root {
+    --sol: #FFCC00;
+    --laranja-por-do-sol: #FF6600;
+    --azul-do-mar: #0066CC;
+    --mar-profundo: #010829;
+    --palmeira: #228B22;
+    --areia-fina: beige;
+    --branco: white;
+}
+
+/* 
+   ESTRUTURA GERAL
+*/
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+
+}
+
+body,
+main {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--branco);
+}
+
+/*LISTA DE OPCOES*/
+
+#selecao-informacao ul {
+
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#selecao-informacao li {
+    margin: 10px;
+}
+
+#selecao-informacao .btn {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 5px 10px;
+    background-color: var(--branco);
+    color: var(--mar-profundo);
+    text-decoration: none;
+
+    border: 2px solid var(--mar-profundo);
+    border-radius: 2px;
+    text-align: center;
+}
+
+/* 
+   LINKS / CARDS
+*/
+
+#selecao-informacao a {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: row;
+
+    gap: 6px;
+
+    padding: 10px;
+
+    background-color: var(--branco);
+
+    border: 1px solid var(--mar-profundo);
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+
+    color: #000000;
+
+    transition:
+        transform
+}
+
+.imagem-de-fundo {
+    height: calc(100vh - 120px);
+    /* ajuste conforme a altura das opções */
+    overflow: hidden;
+}
+
+.imagem-de-fundo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* preenche sem distorcer */
+}
+
+
+
+/*ESTRUTURA VISUAL DA PÁGINA*/
+#modalidades {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* centraliza verticalmente */
+    align-items: center;
+    height: 100vh;
+    /* ocupa toda a altura da tela */
+    overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#modalidades .titulo-secao {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#modalidades .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 colunas */
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+}
+
+#modalidades .card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#modalidades .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(2px) brightness(0.7);
+    /* desfoque menor e escurece */
+}
+
+#modalidades .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+
+    /* camada escura por cima da imagem */
+    background: rgba(0, 0, 0, 0.4);
+    /* ajuste a opacidade conforme necessário */
+}
+
+
+#modalidades .overlay h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+#modalidades .overlay p {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/*ESTRUTURA*/
+#estrutura,
+#vestiarios {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: var(--branco);
+}
+
+#estrutura h2,
+#vestiarios h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--mar-profundo);
+    margin-bottom: 15px;
+}
+
+#estrutura p,
+#vestiarios p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--mar-profundo);
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+}
+
+#estrutura ul {
+    list-style: disc;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    padding-left: 20px;
+    color: var(--mar-profundo);
+}
+
+/*===========================FOTOS DAS QUADRAS=============*/
+
+.fotos-quadras {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.fotos-quadras section {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.fotos-quadras img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.75);
+    /* filtro escuro leve */
+    display: block;
+}
+
+.fotos-quadras h3 {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/*=================VESTIÁRIOS=======================================*/
+
+#vestiarios {
+    padding: 10px 20px;
+    background-color: var(--branco);
+    text-align: center;
+}
+
+#vestiarios .titulo-secao h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--mar-profundo);
+    margin-bottom: 20px;
+}
+
+#vestiarios .titulo-secao {
+    margin-bottom: 40px;
+}
+
+#vestiarios .titulo-secao img {
+    display: none;
+    /* escondemos imagens soltas, vamos usar grid abaixo */
+}
+
+#vestiarios .galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+#vestiarios .galeria section {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#vestiarios .galeria img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    /* leve desfoque + filtro escuro */
+    display: block;
+}
+
+#vestiarios .galeria h3 {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+
+/**/
+#localizacao {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: var(--branco);
+}
+
+#localizacao .titulo-secao h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--mar-profundo);
+    margin-bottom: 10px;
+}
+
+#localizacao .titulo-secao p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--mar-profundo);
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+.localizacao-conteudo {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.localizacao-conteudo .endereco {
+    max-width: 500px;
+    text-align: left;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.localizacao-conteudo .endereco h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--mar-profundo);
+    margin-bottom: 15px;
+}
+
+.localizacao-conteudo .endereco p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--mar-profundo);
+    margin-bottom: 15px;
+}
+
+.localizacao-conteudo .endereco .btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: var(--laranja-por-do-sol);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.localizacao-conteudo .endereco .btn:hover {
+    background-color: var(--azul-do-mar);
+}
+
+.rodape {
+    width: 100%;
+
+    min-height: 65px;
+
+    padding: 10px 0;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    background-color: var(--mar-profundo);
+
+    color: var(--branco);
+
+    flex-shrink: 0;
+}
+
+.container-info-rodape {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+.rodape p {
+    margin: 2px 0;
+
+    font-size: 11px;
+    line-height: 1.3;
+}
