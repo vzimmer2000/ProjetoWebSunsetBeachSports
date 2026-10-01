@@ -177,7 +177,8 @@ main section.ativo {
 }
 
 .seguir-progresso .btn-prosseguir {
-    width: min(100%, 250px);
+    width: min(100%, 150px);
+    margin:10px;
 
     min-height: 50px;
 
@@ -215,8 +216,9 @@ main section.ativo {
 #btn-voltar-etapa4,
 #btn-etapa3,
 #btn-confirmar-reserva {
-    width: min(100%, 250px);
-
+    width: min(100%, 150px);
+    margin:10px;
+    
     min-height: 50px;
 
     padding: 12px 20px;
