@@ -4,13 +4,12 @@ function limparReservaAtual() {
     reservaAtual.quadra = null;
     reservaAtual.data = null;
     reservaAtual.horario = null;
-    // Remove visualmente as seleções da Etapa 1 
 
     atualizarSelecaoModalidade();
     atualizarSelecaoQuadra();
 }
 
-//renderizar resumo da reserva 
+
 function renderizarResumo() {
     const resumo =
         document.getElementById("resumo-reserva");
@@ -23,12 +22,12 @@ function renderizarResumo() {
 
         <p>
             <strong>Quadra:</strong>
-            ${reservaAtual.quadra}
+            ${obterNomeQuadra(reservaAtual.quadra)}
         </p>
 
         <p>
             <strong>Data:</strong>
-            ${reservaAtual.data}
+           ${formatarData(reservaAtual.data)}
         </p>
 
         <p>
@@ -60,13 +59,11 @@ function criarReservaDefinitiva() {
     }
 
     const reserva = {
-        // Identificador único da reserva
+
         id: Date.now().toString(),
 
-        // Identificador do usuário
         usuarioId: usuarioLogado.telefone,
 
-        // Dados escolhidos durante o agendamento
         modalidade: reservaAtual.modalidade,
 
         quadra: reservaAtual.quadra,
@@ -79,7 +76,6 @@ function criarReservaDefinitiva() {
 
     return reserva;
 }
-
 
 /* 
    BOTÃO VOLTAR
@@ -100,20 +96,16 @@ document
     .getElementById("btn-confirmar-reserva")
     .addEventListener("click", function () {
 
-        // Cria a reserva definitiva
         const reserva =
             criarReservaDefinitiva();
 
-        // Se não encontrou usuário, interrompe
         if (!reserva) {
             return;
         }
 
-        // Envia para reservas.js
         const resultado =
             adicionarReserva(reserva);
 
-        // Se houve algum problema
         if (!resultado.sucesso) {
 
             alert(resultado.mensagem);
@@ -121,10 +113,8 @@ document
             return;
         }
 
-        // Reserva criada com sucesso
         alert(resultado.mensagem);
 
-        // Mostra no console apenas para conferência
         console.log(
             "Reserva criada:",
             reserva
@@ -136,3 +126,26 @@ document
         mostrarEtapa(1);
     });
 
+/*FROMATAÇÃO DE DATA E NOME DE QUADRA*/
+
+function formatarData(data) {
+
+    const [ano, mes, dia] =
+        data.split("-");
+
+    return `${dia}/${mes}/${ano}`;
+}
+
+function obterNomeQuadra(id) {
+
+    const quadra =
+        quadras.find(function (quadra) {
+
+            return quadra.id === id;
+
+        });
+
+    return quadra
+        ? quadra.nome
+        : id;
+}

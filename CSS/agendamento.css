@@ -1,16 +1,6 @@
 :root {
-    --sol: #FFCC00;
-    --laranja-por-do-sol: #FF6600;
-    --azul-do-mar: #0066CC;
-    --mar-profundo: #010829;
-    --palmeira: #228B22;
-    --areia-fina: #F5E6C8;
-    --branco: #FFFFFF;
-    --texto: #222222;
-    --cinza: #666666;
-    --borda: #DDDDDD;
-    --raio: 10px;
-    --sombra: 0 4px 14px rgba(0, 0, 0, 0.12);
+
+    --sombra: 4px 4px 14px rgb(124, 124, 124);
 }
 
 * {
@@ -178,7 +168,7 @@ main section.ativo {
 
 .seguir-progresso .btn-prosseguir {
     width: min(100%, 150px);
-    margin:10px;
+    margin: 10px;
 
     min-height: 50px;
 
@@ -217,8 +207,8 @@ main section.ativo {
 #btn-etapa3,
 #btn-confirmar-reserva {
     width: min(100%, 150px);
-    margin:10px;
-    
+    margin: 10px;
+
     min-height: 50px;
 
     padding: 12px 20px;
@@ -433,7 +423,7 @@ main section.ativo {
 }
 
 #resumo-reserva {
-    width: min(90%, 600px);
+    width: min(90%, 340px);
 
     margin: 30px auto;
 
@@ -449,7 +439,7 @@ main section.ativo {
 
     box-shadow: var(--sombra);
 
-    text-align: center;
+    text-align: left;
 
     text-transform: uppercase;
 }
