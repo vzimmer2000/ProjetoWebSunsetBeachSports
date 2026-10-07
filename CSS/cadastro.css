@@ -115,6 +115,10 @@ main {
 
 
 /* INPUTS DO FORMULARIO */
+.container-inputs input.campo-invalido {
+    border: 2px solid #dc3545;
+    background-color: #fff5f5;
+}
 
 .container-inputs {
     display: flex;
@@ -181,6 +185,8 @@ main {
 }
 
 
+
+
 /*
    BOTÃO SALVAR
 */
@@ -238,6 +244,7 @@ main {
 
     box-shadow: var(--sombra);
 }
+
 
 
 #mensagem-cadastro p {

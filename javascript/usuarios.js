@@ -38,3 +38,4 @@ function buscarUsuario(telefone, senha) {
     );
 }
 
+

@@ -30,18 +30,16 @@
               <input
                 type="tel"
                 id="telefone"
-                inputmode="numeric"
-                maxlength="11"
-                minlength="11"
-                pattern="[0-9]{11}"
                 placeholder="54999999999"
+                maxlength="11"
+                inputmode="numeric"
                 required
             /></label>
           </div>
           <div class="container-inputs">
             <label
               >SENHA:
-              <input type="password" id="senha" required />
+              <input type="password" id="senha" minlength="8" required />
             </label>
           </div>
           <button type="submit">SALVAR</button>
