@@ -40,7 +40,8 @@ const quadras = [
         id: "quadra-3",
         nome: "Quadra Beiramar"
 
-    }
+    },
+
 ];
 
 const horarios = [
