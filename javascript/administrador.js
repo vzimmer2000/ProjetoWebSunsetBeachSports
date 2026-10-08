@@ -25,6 +25,17 @@ botaoBuscar.addEventListener("click", function () {
     const reservas =
         obterReservasPorData(data);
 
+    reservas.sort(function (a, b) {
+
+        // Primeiro: ordenar pelo horário
+        if (a.horario !== b.horario) {
+            return a.horario.localeCompare(b.horario);
+        }
+
+        // Segundo: ordenar pela quadra
+        return a.quadra.localeCompare(b.quadra);
+
+    });
 
     // Limpa a lista anterior
     listaReservas.innerHTML = "";
