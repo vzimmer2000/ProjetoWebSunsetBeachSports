@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Consultar Reservas</title>
+
+    <link rel="stylesheet" href="../CSS/global.css" />
+
+    <link rel="stylesheet" href="../CSS/administrador.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav id="navegacao-rapida">
+        <img class="logo-header" src="../assets/images/global/logo.png" />
+      </nav>
+      <button id="btn-logout">LOGOUT</button>
+    </header>
+    <main>
+      <section>
+        <h2>Consultar agenda</h2>
+
+        <label for="data-consulta"> Selecione uma data: </label>
+
+        <input type="date" id="data-consulta" />
+
+        <button id="buscar-reservas">Buscar</button>
+      </section>
+
+      <section>
+        <h2>Reservas</h2>
+
+        <div id="lista-reservas">
+          <!-- Reservas serão adicionadas aqui -->
+        </div>
+      </section>
+    </main>
+    <script src="../javascript/usuarios.js" defer></script>
+    <script src="../javascript/auth.js" defer></script>
+    <script src="../javascript/reservas.js" defer></script>
+    <script src="../javascript/administrador.js" defer></script>
+  </body>
+</html>

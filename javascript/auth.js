@@ -2,6 +2,12 @@
 Arquivo responsável por gerenciar o usuário logado
 funcoes de iniciar sessão, verificar quem está logado e efetuar logout
 */
+const ADMINISTRADOR = {
+    login: "54991855959",
+    senha: "SunsetBeachSports2026@"
+};
+
+
 function iniciarSessao(usuario) {
 
     localStorage.setItem(
@@ -19,19 +25,40 @@ function obterUsuarioLogado() {
 
 function usuarioEstaLogado() {
 
-    return localStorage.getItem("usuarioLogado") !== null;
+    return localStorage.getItem(
+        "usuarioLogado"
+    ) !== null;
+}
+
+function usuarioEhAdministrador() {
+
+    const usuario =
+        obterUsuarioLogado();
+
+    return (
+        usuario !== null &&
+        usuario.tipo === "admin"
+    );
 }
 
 function logout() {
 
-    localStorage.removeItem("usuarioLogado");
+    localStorage.removeItem(
+        "usuarioLogado"
+    );
 
-    if (window.location.pathname.includes("/pages/")) {
+    if (
+        window.location.pathname.includes(
+            "/pages/"
+        )
+    ) {
 
-        window.location.href = "login.html";
+        window.location.href =
+            "login.html";
 
     } else {
 
-        window.location.href = "pages/login.html";
+        window.location.href =
+            "pages/login.html";
     }
 }

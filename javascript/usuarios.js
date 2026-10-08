@@ -38,4 +38,17 @@ function buscarUsuario(telefone, senha) {
     );
 }
 
+function obterNomeUsuarioPorTelefone(telefone) {
 
+    const usuarios = obterUsuarios();
+
+    const usuario = usuarios.find(function (usuario) {
+        return usuario.telefone === telefone;
+    });
+
+    if (!usuario) {
+        return "Usuário não encontrado";
+    }
+
+    return usuario.nome;
+}

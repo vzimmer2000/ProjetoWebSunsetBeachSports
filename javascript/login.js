@@ -1,25 +1,87 @@
-const formularioLogin = document.getElementById("form-login");
+const formularioLogin =
+    document.getElementById("form-login");
 
-formularioLogin.addEventListener("submit", function (event) {
-    event.preventDefault();
 
-    const telefone = document.getElementById("login-telefone").value;
-    const senha = document.getElementById("login-senha").value;
+formularioLogin.addEventListener(
+    "submit",
+    function (event) {
 
-    const usuario = buscarUsuario(telefone, senha);
-    if (!usuario) {
-        alert("nenhum usuario com esses dados encontrado");
-        return;
-    }
+        event.preventDefault();
 
-    iniciarSessao(usuario);
 
-    const mensagemLogin = document.getElementById("mensagem-login");
-    mensagemLogin.innerHTML =
-        `   
-            <p>Bem vindo(a): ${usuario.nome}!</p>
+        const telefone =
+            document.getElementById(
+                "login-telefone"
+            ).value;
+
+        const senha =
+            document.getElementById(
+                "login-senha"
+            ).value;
+
+        if (
+            telefone === ADMINISTRADOR.login &&
+            senha === ADMINISTRADOR.senha
+        ) {
+
+            const administrador = {
+
+                tipo: "admin",
+
+                login: ADMINISTRADOR.login
+
+            };
+
+
+            iniciarSessao(administrador);
+
+
+            window.location.href =
+                "administrador.html";
+
+
+            return;
+        }
+
+        const usuario =
+            buscarUsuario(
+                telefone,
+                senha
+            );
+
+
+        if (!usuario) {
+
+            alert(
+                "Nenhum usuário com esses dados encontrado."
+            );
+
+            return;
+        }
+
+
+        iniciarSessao(usuario);
+
+
+        const mensagemLogin =
+            document.getElementById(
+                "mensagem-login"
+            );
+
+
+        mensagemLogin.innerHTML = `
+            <p>
+                Bem vindo(a): ${usuario.nome}!
+            </p>
         `;
-    setTimeout(() => {
-        window.location.href = "../index.html";
-    }, 2000);
-});
+
+
+        setTimeout(function () {
+
+            window.location.href =
+                "../index.html";
+
+        }, 2000);
+
+    }
+);

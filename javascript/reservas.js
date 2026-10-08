@@ -315,3 +315,15 @@ function obterReservasDoUsuario() {
 
     });
 }
+
+/*nova função adicionada para obter reservas por data, que será utilizada na página de adm */
+function obterReservasPorData(data) {
+
+    const reservas = obterReservas();
+
+    return reservas.filter(function (reserva) {
+
+        return reserva.data === data;
+
+    });
+}
