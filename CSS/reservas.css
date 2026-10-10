@@ -339,6 +339,15 @@ main h1 {
 }
 
 
+.status-reserva.concluida {
+    color: var(--palmeira);
+    font-weight: 600;
+    background-color: var(--fundo-formulario);
+    padding: 10px;
+    border-radius: var(--raio);
+}
+
+
 /* =========================================================
    MENSAGEM DE ERRO
 ========================================================= */

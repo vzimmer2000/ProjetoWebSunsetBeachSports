@@ -1,3 +1,5 @@
+
+
 /* =========================================================
    RENDERIZA AS RESERVAS DO USUÁRIO
 ========================================================= */
@@ -11,6 +13,7 @@ function renderizarReservas() {
         document.getElementById("sem-reservas");
 
 
+
     container.innerHTML = "";
     mensagem.innerHTML = "";
 
@@ -18,6 +21,16 @@ function renderizarReservas() {
     const reservas =
         obterReservasDoUsuario();
 
+    // Ordena por data, quadra e horário
+    reservas.sort(function (a, b) {
+
+        if (a.data !== b.data) {
+            return a.data.localeCompare(b.data);
+        }
+
+        return a.horario.localeCompare(b.horario);
+
+    });
 
     if (reservas.length === 0) {
 
@@ -29,7 +42,11 @@ function renderizarReservas() {
 
 
     reservas.forEach(function (reserva) {
-
+        // Verifica se a data e o horário já passaram
+        const concluida = reservaConcluida(
+            reserva.data,
+            reserva.horario
+        );
         const card =
             document.createElement("article");
 
@@ -58,23 +75,31 @@ function renderizarReservas() {
                 ${reserva.horario}
             </p>
 
-            <div class="acoes-reserva">
+            ${concluida
+                ? `
+                        <p class="status-reserva concluida">
+                            <strong>Status:</strong> CONCLUÍDA
+                        </p>
+                    `
+                : `
+                        <div class="acoes-reserva">
 
-                <button
-                    type="button"
-                    class="btn-cancelar"
-                    data-id="${reserva.id}">
-                    CANCELAR RESERVA
-                </button>
+                            <button
+                                type="button"
+                                class="btn-cancelar"
+                                data-id="${reserva.id}">
+                                CANCELAR RESERVA
+                            </button>
 
-            </div>
+                        </div>
+                    `
+            }
         `;
 
 
         container.appendChild(card);
     });
 }
-
 
 /* =========================================================
    OBTÉM O NOME DA QUADRA
@@ -196,6 +221,33 @@ document
         }
     );
 
+
+/* =========================================================
+   VERIFICA SE A RESERVA JÁ FOI REALIZADA
+========================================================= */
+
+function reservaConcluida(dataReserva, horarioReserva) {
+
+    const agora = new Date();
+
+    const [ano, mes, dia] = dataReserva
+        .split("-")
+        .map(Number);
+
+    const [hora, minuto] = horarioReserva
+        .split(":")
+        .map(Number);
+
+    const dataHoraReserva = new Date(
+        ano,
+        mes - 1,
+        dia,
+        hora,
+        minuto || 0
+    );
+
+    return dataHoraReserva <= agora;
+}
 
 /* =========================================================
    INICIALIZAÇÃO

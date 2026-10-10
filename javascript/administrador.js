@@ -1,3 +1,10 @@
+/*
+funções usadas na página de ADM
+aqui o administrador escolhe uma dta e visualiza todas 
+as reservas daquele dia especifico
+e ele tem a opção de cancelar a reserva
+*/
+
 const inputData =
     document.getElementById("data-consulta");
 
@@ -7,41 +14,34 @@ const botaoBuscar =
 const listaReservas =
     document.getElementById("lista-reservas");
 
-
 botaoBuscar.addEventListener("click", function () {
 
     const data =
         inputData.value;
 
-    // Verifica se uma data foi selecionada
     if (!data) {
 
         alert("Selecione uma data.");
 
         return;
     }
-
+    const dataConsulta = data;
 
     const reservas =
         obterReservasPorData(data);
 
     reservas.sort(function (a, b) {
 
-        // Primeiro: ordenar pelo horário
         if (a.horario !== b.horario) {
             return a.horario.localeCompare(b.horario);
         }
 
-        // Segundo: ordenar pela quadra
         return a.quadra.localeCompare(b.quadra);
 
     });
 
-    // Limpa a lista anterior
     listaReservas.innerHTML = "";
 
-
-    // Nenhuma reserva encontrada
     if (reservas.length === 0) {
 
         listaReservas.innerHTML = `
@@ -53,13 +53,21 @@ botaoBuscar.addEventListener("click", function () {
         return;
     }
 
-    // Percorre todas as reservas encontradas
+
     reservas.forEach(function (reserva) {
 
         const nomeCliente =
             obterNomeUsuarioPorTelefone(reserva.usuarioId);
 
+
+        // Verifica se a data e o horário já passaram
+        const concluida = reservaConcluida(
+            reserva.data,
+            reserva.horario
+        );
+
         let nomeQuadra;
+
         if (reserva.quadra == "quadra-1") {
             nomeQuadra = "Quadra Maré";
         }
@@ -67,10 +75,12 @@ botaoBuscar.addEventListener("click", function () {
             nomeQuadra = "Quadra Brisa";
         }
         else if (reserva.quadra == "quadra-3") {
-            nomeQuadra = "Quadra Beira-mar"
+            nomeQuadra = "Quadra Beira-mar";
         }
 
+
         let esporte;
+
         if (reserva.modalidade == "volei") {
             esporte = "Vôlei de Praia";
         }
@@ -78,7 +88,7 @@ botaoBuscar.addEventListener("click", function () {
             esporte = "Futevôlei";
         }
         else if (reserva.modalidade == "beach-tennis") {
-            esporte = "Beach-Tennis"
+            esporte = "Beach-Tennis";
         }
 
 
@@ -89,7 +99,22 @@ botaoBuscar.addEventListener("click", function () {
 
 
         elemento.innerHTML = `
+        <div class="cabecalho-reserva">
+
             <h3>${reserva.horario}</h3>
+
+            ${concluida
+                ? `
+                        <span class="status-reserva concluida">
+                            CONCLUÍDA
+                        </span>
+                    `
+                : ""
+            }
+
+        </div>
+
+        <div class="dados-reserva">
 
             <p>
                 <strong>Cliente:</strong>
@@ -98,13 +123,12 @@ botaoBuscar.addEventListener("click", function () {
 
             <p>
                 <strong>Telefone:</strong>
-                ${formatarTelefone(reserva.usuarioId)}      
+                ${formatarTelefone(reserva.usuarioId)}
             </p>
 
             <p>
                 <strong>Quadra:</strong>
                 ${nomeQuadra}
-            
             </p>
 
             <p>
@@ -112,24 +136,27 @@ botaoBuscar.addEventListener("click", function () {
                 ${esporte}
             </p>
 
-            <button
-                class="btn-cancelar"
-                data-id="${reserva.id}"
-            >
-                Cancelar reserva
-            </button>
-        `;
+        </div>
 
+        ${concluida
+                ? ""
+                : `
+                    <button
+                        class="btn-cancelar"
+                        data-id="${reserva.id}">
+                        Cancelar reserva
+                    </button>
+                `
+            }
+    `;
 
         listaReservas.appendChild(elemento);
-
     });
 
 });
 listaReservas.addEventListener(
     "click",
     function (evento) {
-
         if (
             !evento.target.classList.contains(
                 "btn-cancelar"
@@ -137,30 +164,20 @@ listaReservas.addEventListener(
         ) {
             return;
         }
-
-
         const id =
             evento.target.dataset.id;
-
 
         const resultado =
             cancelarReserva(id);
 
-
         alert(resultado.mensagem);
-
 
         if (resultado.sucesso) {
 
-            // Faz a consulta novamente
-            // para atualizar a lista
             botaoBuscar.click();
-
         }
-
     }
 );
-
 
 const btnLogout =
     document.getElementById("btn-logout");
@@ -174,10 +191,36 @@ if (btnLogout) {
 }
 
 function formatarTelefone(telefone) {
-
     telefone = String(telefone);
 
     return telefone.slice(0, 2) + " " +
         telefone.slice(2, 7) + "-" +
         telefone.slice(7);
+}
+
+
+/* =========================================================
+   VERIFICA SE A RESERVA JÁ FOI CONCLUÍDA
+   Considera a data e o horário.
+========================================================= */
+
+function reservaConcluida(dataReserva, horarioReserva) {
+
+    const agora = new Date();
+
+    const [ano, mes, dia] =
+        dataReserva.split("-").map(Number);
+
+    const [hora, minuto] =
+        horarioReserva.split(":").map(Number);
+
+    const dataHoraReserva = new Date(
+        ano,
+        mes - 1,
+        dia,
+        hora,
+        minuto || 0
+    );
+
+    return dataHoraReserva <= agora;
 }
